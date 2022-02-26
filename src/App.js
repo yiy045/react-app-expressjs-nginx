@@ -1,56 +1,19 @@
 import React from "react";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
+import "./App.css"
 
-export default function App() {
-  const basename = process.env.REACT_APP_BASENAME || null;
-  return (
-    <Router basename={basename}>
-      <div>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/about">About</Link>
-            </li>
-            <li>
-              <Link to="/users">Users</Link>
-            </li>
-          </ul>
-        </nav>
-
-        {/* A <Switch> looks through its children <Route>s and
-            renders the first one that matches the current URL. */}
-        <Switch>
-          <Route path="/about">
-            <About />
-          </Route>
-          <Route path="/users">
-            <Users />
-          </Route>
-          <Route path="/">
-            <Home />
-          </Route>
-        </Switch>
+function App() {
+  return ( 
+    <div className="App">
+      <header>WorldWide Frames</header>
+      <button>frame set 1</button>
+      <button>frame set 2</button>
+      <button>frame set 3</button>
+      <button>frame set 4</button>
+      <div className="Topright">
+        <button style={{backgroundColor: "lightblue"}}>Shopping Cart</button>
       </div>
-    </Router>
+    </div>
   );
 }
 
-function Home() {
-  return <h2>Home</h2>;
-}
-
-function About() {
-  return <h2>About</h2>;
-}
-
-function Users() {
-  return <h2>Users</h2>;
-}
+export default App;
