@@ -11,14 +11,35 @@
   }
   
   header {
-    text-align: center;
-    background-color: rgb(180, 255, 214);
+    text-align: left;
+    background-color:aqua;
     color: black;
     font-size:x-large;
     margin: none;
     border-radius: none;
     padding: 10%;
   }
+
+  h2 {
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-align: center;
+    background-color: rgb(184, 227, 240);
+    color: black;
+    font-size:large;
+    margin: none;
+    border-radius: none;
+    padding: 1%;
+  }
+  h3 {
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-align: justify;
+    color: black;
+    font-size:large;
+    margin: none;
+    border-radius: none;
+    padding: 1%;
+  }
+
   
   button {
     color: black;

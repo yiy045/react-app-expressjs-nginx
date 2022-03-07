@@ -4,11 +4,11 @@
     width: 100%;
     justify-content: center;
     align-items: center;
-  
+    background-color:aqua;
   }
   
   input {
-    width: 300px;
+    width: 250px;
     height: 50px;
     font-size: 20px;
     padding-left: 10px;
