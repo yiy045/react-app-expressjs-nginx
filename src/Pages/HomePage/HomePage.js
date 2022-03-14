@@ -1,4 +1,5 @@
 import "./HomePage.css"
+import image  from "../../images/cartimage.png"
 function Home() {
     return (
       <div>
@@ -14,7 +15,11 @@ function Home() {
           <button>frame set 5</button>
         </div>
         <div className="Topright">
-          <button style={{backgroundColor: "lightblue"}}>Shopping Cart</button>
+          <div className="cart-button">
+         <img src={image} alt = ""
+         width="55"
+         height = "50" />
+         </div>
         </div>
       </div>
       

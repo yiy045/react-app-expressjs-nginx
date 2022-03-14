@@ -12,7 +12,10 @@
   
   header {
     text-align: left;
-    background-color:aqua;
+    background-image: url(../../images/oceanimage.jpg);
+    background-blend-mode:lighten;
+    background-size:cover;
+    opacity:1;
     color: black;
     font-size:x-large;
     margin: none;
@@ -48,17 +51,29 @@
     font-size: large;
     border: none;
     margin: 5%;
-    background-color: rgb(183,255,207);
+    background-color: rgb(102, 255, 0);
+  }
+
+  .cart-button {
+    color: black;
+    padding: 5px 5px;
+    text-decoration: none;
+    font-size: large;
+    border: none;
+    margin: 1%;
+  }
+  .cart-button:hover {
+    cursor:pointer;
   }
   
   button:hover {
     background-color: rgb(0,141,141);
     color: white;
   }
-  
+
   .Topright {
     position: absolute;
-    top: 8px;
+    top: 30px;
     right: 16px;
     font-size:18px;
   }
