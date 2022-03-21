@@ -1,4 +1,6 @@
 import React from "react";
+import Registration from "./Pages/LoginPage/LoginPage";
+import Home from "./Pages/HomePage/HomePage"
 import {
   BrowserRouter as Router,
   Switch,
@@ -6,32 +8,20 @@ import {
   Link
 } from "react-router-dom";
 
-export default function App() {
-  return (
-    <Router>
+function App() {
+  const basename = process.env.REACT_APP_BASENAME || null;
+  return ( 
+    <Router basename={basename}>
       <div>
         <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/about">About</Link>
-            </li>
-            <li>
-              <Link to="/users">Users</Link>
-            </li>
-          </ul>
+          <Link to="/">Home</Link>
+          &nbsp;
+          <Link to="/registration">Register</Link>
         </nav>
 
-        {/* A <Switch> looks through its children <Route>s and
-            renders the first one that matches the current URL. */}
         <Switch>
-          <Route path="/about">
-            <About />
-          </Route>
-          <Route path="/users">
-            <Users />
+          <Route path="/registration">
+            <Registration />
           </Route>
           <Route path="/">
             <Home />
@@ -42,14 +32,4 @@ export default function App() {
   );
 }
 
-function Home() {
-  return <h2>Home</h2>;
-}
-
-function About() {
-  return <h2>About</h2>;
-}
-
-function Users() {
-  return <h2>Users</h2>;
-}
+export default App;
