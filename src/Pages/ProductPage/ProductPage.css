@@ -1,4 +1,4 @@
-.App {
+.App1 {
     min-height: 100vh;
     background-color: rgb(211, 254, 255);
     font-family: 'Times New Roman', Times, serif;
@@ -6,40 +6,40 @@
     padding: 0;
     text-align: center;
   }
-
-  header {
-    text-align: left;
-    background-color:aqua;
-    color: black;
-    font-size:x-large;
-    margin: none;
-    border-radius: none;
-    padding: 10%;
-  }
-
-  button {
-    color: black;
-    padding: 20px 60px;
-    text-decoration: none;
-    font-size: large;
-    border: none;
-    margin: 5%;
-    background-color: rgb(183,255,207);
-  }
-
-  button:hover {
-    background-color: rgb(0,141,141);
-    color: white;
-  }
-
-  h2 {
-    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  .panel1 {
+    font-family: 'Times New Roman', Times, serif;
+    margin: 0;
+    padding: 0;
     text-align: center;
-    background-color: rgb(184, 227, 240);
-    color: black;
-    font-size:large;
-    margin: none;
-    border-radius: none;
-    padding: 1%;
   }
+
+.header1{
+    min-height: 10vh;
+    background-color: aqua;
+    font-family: 'Times New Roman', Times, serif;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+.header2{
+    position: fixed;
+    top: 110px;
+    left: 750px;
+    height: 500px;
+    width: 500px;
+    background-color: rgb(189, 207, 209);
+    font-family: 'Times New Roman', Times, serif;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+}
+
+button{
+    position: fixed;
+    left: 550px;
+    top: 550px;
+}
+
+  
 
