@@ -17,8 +17,7 @@ function App() {
           <Link to="/">Home</Link>
           &nbsp;
           <Link to="/registration">Register</Link>
-        </nav>
-
+          </nav>
         <Switch>
           <Route path="/registration">
             <Registration />
