@@ -1,6 +1,7 @@
 import React from "react";
 import Registration from "./Pages/LoginPage/LoginPage";
 import Home from "./Pages/HomePage/HomePage"
+import Product from "./Pages/ProductPage/ProductPage"
 import {
   BrowserRouter as Router,
   Switch,
@@ -17,10 +18,16 @@ function App() {
           <Link to="/">Home</Link>
           &nbsp;
           <Link to="/registration">Register</Link>
-          </nav>
+          &nbsp;
+          <Link to="/product">Product</Link>
+        </nav>
+
         <Switch>
           <Route path="/registration">
             <Registration />
+          </Route>
+          <Route path="/product">
+            <Product />
           </Route>
           <Route path="/">
             <Home />
