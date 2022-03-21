@@ -10,11 +10,9 @@ function Product(){
                     {/* create an overall panel, with header 2, the image, and the button inside of it */}
                     <div className = "panel1">
                         <div className = "header2">    
-                            <header2>
                                 <p>Name: </p>
                                 <p>Manufacturer: </p>
-                                <p> Cost: </p>
-                            </header2>
+                                <p>Cost: </p>
                         </div>
                         <button>Add to Cart</button>
                     </div>

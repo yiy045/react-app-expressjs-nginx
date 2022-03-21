@@ -7,10 +7,10 @@
     text-align: center;
   }
   .panel1 {
+    height: 500px;
     font-family: 'Times New Roman', Times, serif;
     margin: 0;
     padding: 0;
-    text-align: center;
   }
 
 .header1{
@@ -22,12 +22,15 @@
     text-align: center;
 }
 
+/*
+* percentage's are used to scale items according to browser resizing
+* can possibly use flex containers for buttons
+*/
 .header2{
-    position: fixed;
-    top: 110px;
-    left: 750px;
+    position: relative;
+    left: 55%;
     height: 500px;
-    width: 500px;
+    width: 40%;
     background-color: rgb(189, 207, 209);
     font-family: 'Times New Roman', Times, serif;
     margin: 0;
@@ -35,8 +38,8 @@
     text-align: left;
 }
 
-button{
-    position: fixed;
-    left: 550px;
-    top: 550px;
+button {
+    position: relative;
+    left: 25%;
+    width: 15%;
 }
