@@ -2,12 +2,10 @@ import "./ProductPage.css"
 
 function Product(){
     return(
-            <div>
-                <div className = "App">
-                    <header><b>PRODUCT NAME HERE</b></header>
-                    <button>Add to Cart</button>
-                </div>
-            </div>
+        <div className="Product">
+            <b>PRODUCT NAME HERE</b>
+            <button>Add to Cart</button>
+        </div>
     );
 }
 
