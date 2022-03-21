@@ -1,0 +1,14 @@
+.Product {
+    min-height: 10vh;
+    text-align: left;
+    background-image: url(../../images/oceanimage.jpg);
+    background-blend-mode:lighten;
+    background-position: center;
+    background-size:cover;
+    opacity:1;
+    color: black;
+    font-size:x-large;
+    margin: none;
+    border-radius: none;
+    padding: 10%;
+}

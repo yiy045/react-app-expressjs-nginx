@@ -1,18 +1,40 @@
 import React from "react";
-import "./App.css"
+import Registration from "./Pages/LoginPage/LoginPage";
+import Home from "./Pages/HomePage/HomePage"
+import Product from "./Pages/ProductPage/ProductPage"
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 
 function App() {
+  const basename = process.env.REACT_APP_BASENAME || null;
   return ( 
-    <div className="App">
-      <header>WorldWide Frames</header>
-      <button>frame set 1</button>
-      <button>frame set 2</button>
-      <button>frame set 3</button>
-      <button>frame set 4</button>
-      <div className="Topright">
-        <button style={{backgroundColor: "lightblue"}}>Shopping Cart</button>
+    <Router basename={basename}>
+      <div>
+        <nav>
+          <Link to="/">Home</Link>
+          &nbsp;
+          <Link to="/registration">Register</Link>
+          &nbsp;
+          <Link to="/product">Product</Link>
+        </nav>
+
+        <Switch>
+          <Route path="/registration">
+            <Registration />
+          </Route>
+          <Route path="/product">
+            <Product />
+          </Route>
+          <Route path="/">
+            <Home />
+          </Route>
+        </Switch>
       </div>
-    </div>
+    </Router>
   );
 }
 
