@@ -6,14 +6,12 @@
     padding: 0;
     text-align: center;
   }
-  .Homepage {
-    text-align: center;
-  }
   
   header {
     text-align: left;
     background-image: url(../../images/oceanimage.jpg);
     background-blend-mode:lighten;
+    background-position: center;
     background-size:cover;
     opacity:1;
     color: black;
@@ -54,7 +52,7 @@
     background-color: rgb(102, 255, 0);
   }
 
-  .cart-button {
+  .hotbar-button {
     color: black;
     padding: 5px 5px;
     text-decoration: none;
@@ -62,7 +60,7 @@
     border: none;
     margin: 1%;
   }
-  .cart-button:hover {
+  .hotbar-button:hover {
     cursor:pointer;
   }
   
@@ -75,5 +73,11 @@
     position: absolute;
     top: 30px;
     right: 16px;
-    font-size:18px;
+    font-size:18px
+  }
+  
+  .Middleright {
+    position: absolute;
+    top:30px;
+    right:80px;
   }
