@@ -38,7 +38,7 @@
     text-align: left;
 }
 
-button {
+.button {
     position: relative;
     left: 25%;
     width: 15%;
