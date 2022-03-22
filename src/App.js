@@ -1,7 +1,8 @@
 import React from "react";
-import Registration from "./Pages/LoginPage/LoginPage";
+import Registration from "./Pages/RegistrationPage/RegistrationPage";
 import Home from "./Pages/HomePage/HomePage"
 import Product from "./Pages/ProductPage/ProductPage"
+import "./GeneralStyles.css";
 import {
   BrowserRouter as Router,
   Switch,
