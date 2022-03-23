@@ -26,12 +26,12 @@ const db = mysql.createConnection({
   database: "account_information"
 });
 
-db.connect( (err) => {
-  if (err) {
-    throw err;
-  }
+db.connect((err) => {
+    if (err) {
+        throw err;
+    }
 
-  console.log("Connected to MySQL server.");
+    console.log("Connected to MySQL server.");
 });
 
 app.post("/create", (req, res) => {
@@ -55,5 +55,5 @@ app
 
 // start express server on port 5000
 server.listen(5000, () => {
-      console.log('NodeJS server running');
+    console.log('NodeJS server running');
 });
