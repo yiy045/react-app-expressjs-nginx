@@ -4,80 +4,80 @@
     font-family: 'Times New Roman', Times, serif;
     margin: 0;
     padding: 0;
-    text-align: center;
-  }
-  
-  header {
+}
+
+header {
     text-align: left;
     background-image: url(../../images/oceanimage.jpg);
-    background-blend-mode:lighten;
+    background-blend-mode: lighten;
     background-position: center;
-    background-size:cover;
-    opacity:1;
+    background-size: cover;
+    opacity: 1;
     color: black;
-    font-size:x-large;
+    font-size: x-large;
     margin: none;
     border-radius: none;
     padding: 10%;
-  }
+}
 
-  h2 {
-    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+h2 {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     text-align: center;
     background-color: rgb(184, 227, 240);
     color: black;
-    font-size:large;
+    font-size: large;
     margin: none;
     border-radius: none;
     padding: 1%;
-  }
-  h3 {
-    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+h3 {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     text-align: justify;
     color: black;
-    font-size:large;
+    font-size: large;
     margin: none;
     border-radius: none;
     padding: 1%;
-  }
+}
 
-  
-  button {
+.Frames{
+    display: flex;
+    flex-direction: column;
     color: black;
-    padding: 20px 60px;
-    text-decoration: none;
     font-size: large;
-    border: none;
     margin: 5%;
-    background-color: rgb(102, 255, 0);
-  }
+    align-items: left;
+    text-align: center;
+}
 
-  .hotbar-button {
+.Frames button {
+    height: 30px;
+    width: 20%;
+}
+
+.hotbar-button {
     color: black;
     padding: 5px 5px;
     text-decoration: none;
     font-size: large;
     border: none;
     margin: 1%;
-  }
-  .hotbar-button:hover {
-    cursor:pointer;
-  }
-  
-  button:hover {
-    background-color: rgb(0,141,141);
-    color: white;
-  }
+}
 
-  .Topright {
+.hotbar-button:hover {
+    cursor: pointer;
+}
+
+.Topright {
     position: absolute;
     top: 30px;
     right: 16px;
-    font-size:18px
-  }
-  
-  .Middleright {
+    font-size: 18px
+}
+
+.Middleright {
     position: absolute;
-    top:30px;
-    right:80px;
-  }
+    top: 30px;
+    right: 80px;
+}
