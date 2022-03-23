@@ -46,31 +46,46 @@ app.post("/register", (req, res) => {
     const lastname = req.body.lastname;
     const phone = req.body.phone;
 
-    bcrypt.hash(password, saltRounds, (err, hash) => {
-        if (err) {
-            console.log(err);
-        }
-
-        const data = [
-            username,
-            email,
-            address,
-            hash,
-            firstname,
-            lastname,
-            phone
-        ];
-
-        const query = "INSERT INTO account (username, email, address, password, first_name, last_name, phone_num) VALUES (?, ?, ?, ?, ?, ?, ?);";
-        db.query(
-            query, data,
-            (err, result) => {
-                if (err) {
-                    res.send({ err: err });
-                }
+    db.query(
+        "SELECT * FROM account WHERE username = ?",
+        username,
+        (err, result) => {
+            if (err) {
+                console.log(err);
             }
-        );
-    });
+            if (result.length > 0) {
+                return res.send({ message: "User account already exists!" });
+
+            } else {
+                bcrypt.hash(password, saltRounds, (err, hash) => {
+                    if (err) {
+                        console.log(err);
+                    }
+
+                    const data = [
+                        username,
+                        email,
+                        address,
+                        hash,
+                        firstname,
+                        lastname,
+                        phone
+                    ];
+
+                    const query = "INSERT INTO account (username, email, address, password, first_name, last_name, phone_num) VALUES (?, ?, ?, ?, ?, ?, ?);";
+                    db.query(
+                        query, data,
+                        (err, result) => {
+                            if (err) {
+                                res.send({ err: err });
+                            }
+                            res.send({ message: "You have been successfully registered!" });
+                        }
+                    );
+                });
+            }
+        }
+    )
 });
 // start express server on port 5000
 server.listen(5000, () => {
