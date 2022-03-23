@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./RegistrationPage.css"
 import Axios from "axios";
+import { useHistory } from "react-router-dom";
 
 function Registration() {
 	const [username, setUsername] = useState("");
@@ -11,18 +12,25 @@ function Registration() {
 	const [lastname, setLastname] = useState(0);
 	const [phone, setPhone] = useState("");
 
+	let history = useHistory();
+
 	const registerUser = () => {
-		Axios.post("http://localhost:5000/create", {
+		const data = {
 			username: username,
+			password: password,
 			email: email,
 			address: address,
-			password: password,
 			firstname: firstname,
 			lastname: lastname,
-			phone: phone,
-		}).then((response) => {
-			if (response.data.message) {
-				console.log(response.data.message)
+			phone: phone
+		};
+		Axios.post("http://localhost:5000/register", data).then((response) => {
+			if (response.data.error) {
+				alert(response.data.error);
+				console.log("error!");
+			} else {
+				console.log(response);
+				/*history.push("/");*/
 			}
 		});
 	};
