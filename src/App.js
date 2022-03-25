@@ -1,4 +1,5 @@
 import React from "react";
+import Account from "./Pages/AccountPage/AccountPage";
 import Registration from "./Pages/RegistrationPage/RegistrationPage";
 import Home from "./Pages/HomePage/HomePage"
 import Product from "./Pages/ProductPage/ProductPage"
@@ -24,11 +25,16 @@ function App() {
           <Link to="/product">Product</Link>
           &nbsp;
           <Link to="/signin">Sign In</Link>
+          &nbsp;
+          <Link to="/account">Account</Link>
         </nav>
 
         <Switch>
           <Route path="/signin">
             <SignIn />
+          </Route>
+          <Route path="/account">
+            <Account />
           </Route>
           <Route path="/registration">
             <Registration />
