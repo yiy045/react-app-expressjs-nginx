@@ -3,21 +3,35 @@ const cors = require('cors');
 const express = require('express');
 const app = express(); // create express app
 const http = require('http');
+
+const bodyParser = require("body-parser");
+const cookieParser = require("cookie-parser");
+const session = require("express-session");
+
 const mysql = require('mysql');
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
-app.use(cors());
 
-const bodyParser = require('body-parser');
-app.use(bodyParser.json());
+app.use(express.json());
+app.use(cors({
+    origin: ["http://localhost:3000"],
+    methods: ["GET", "POST"],
+    credentials: true,
+}));
 
-// add middlewares
-const root = require('path').join(__dirname, 'build');
-app.use(express.static(root));
+app.use(cookieParser());
+app.use(bodyParser.urlencoded({ extended: true }));
 
-//app.use('/*', (req, res) => {
-//  res.sendFile(path.join(__dirname, 'build', 'index.html'));
-//});
+app.use(session({
+    key: "userId",
+    secret: "test",
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+        expires: 60 * 60 * 60 * 24,
+    },
+}));
+
 
 const server = http.createServer(app);
 
@@ -88,35 +102,38 @@ app.post("/register", (req, res) => {
     )
 });
 
-app.post('/signin', (req, res) => 
-{
+
+app.get("/signin", (req, res) => {
+    if (req.session.user) {
+        res.send({ loggedIn: true, user: req.session.user })
+    } else {
+        res.send({ loggedIn: false })
+    }
+})
+
+app.post('/signin', (req, res) => {
     const username = req.body.username;
     const password = req.body.password;
 
     db.query(
         "SELECT * FROM account WHERE username = ?",
         username,
-        (err, result) =>
-        {
-            if(err)
-            {
-                res.send({err: err})
+        (err, result) => {
+            if (err) {
+                res.send({ err: err })
             }
-                
-            if (result.length > 0)
-            {
-                bcrypt.compare(password, result[0].password, (error, response) =>
-                {
-                    if(response)
-                    {
+
+            if (result.length > 0) {
+                bcrypt.compare(password, result[0].password, (error, response) => {
+                    if (response) {
+                        req.session.user = result;
+                        console.log(req.session.user)
                         res.send(result)
-                    } else
-                    {
+                    } else {
                         res.send({ message: "Incorrect username or password" })
                     }
                 })
-            } else
-            {
+            } else {
                 res.send({ message: "Incorrect username" })
             }
         }
