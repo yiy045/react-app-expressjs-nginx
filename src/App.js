@@ -2,34 +2,36 @@ import React from "react";
 import Registration from "./Pages/RegistrationPage/RegistrationPage";
 import Home from "./Pages/HomePage/HomePage"
 import Product from "./Pages/ProductPage/ProductPage"
-import SignIn from "./Pages/SignInPage/SignInPage"
 import "./GeneralStyles.css";
+import home from "../src/images/homebutton.png"
+
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Link
 } from "react-router-dom";
-
 function App() {
   const basename = process.env.REACT_APP_BASENAME || null;
   return ( 
     <Router basename={basename}>
-      <div>
+      <div style = {{background: "lightgrey"}}>
         <nav>
-          <Link to="/">Home</Link>
           &nbsp;
-          <Link to="/registration">Register</Link>
+          <Link to="/">
+            <img src = {home} alt = ""
+            width="50"
+            height="50" />
+          </Link>
+          &nbsp;
+          &nbsp;
+          <Link to="/registration">Registration</Link>
+          &nbsp;
           &nbsp;
           <Link to="/product">Product</Link>
-          &nbsp;
-          <Link to="/signin">Sign In</Link>
-        </nav>
+          </nav>
 
         <Switch>
-          <Route path="/signin">
-            <SignIn />
-          </Route>
           <Route path="/registration">
             <Registration />
           </Route>
