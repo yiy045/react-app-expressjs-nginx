@@ -12,6 +12,8 @@ function Registration() {
 	const [lastname, setLastname] = useState(0);
 	const [phone, setPhone] = useState("");
 
+	const [registrationStatus, setRegistrationStatus] = useState("");
+
 	let history = useHistory();
 
 	const registerUser = () => {
@@ -24,12 +26,21 @@ function Registration() {
 			lastname: lastname,
 			phone: phone
 		};
+
+		let emptyField = Object.values(data).includes("");
+		if (emptyField) {
+			setRegistrationStatus("You must fill out all fields before continuing");
+			return;
+		}
+
 		Axios.post("http://localhost:5000/register", data).then((response) => {
 			if (response.data.error) {
 				alert(response.data.error);
 				console.log("error!");
 			} else {
-				console.log(response);
+				if (response.data.message) {
+					setRegistrationStatus(response.data.message);
+				}
 				/*history.push("/");*/
 			}
 		});
@@ -49,7 +60,7 @@ function Registration() {
 					setPassword(event.target.value);
 				}}
 			/>
-			<label>email:</label>
+			<label>Email:</label>
 			<input type="text"
 				onChange={(event) => {
 					setEmail(event.target.value);
@@ -80,6 +91,7 @@ function Registration() {
 				}}
 			/>
 			<button onClick={registerUser}>Register</button>
+			<h1>{registrationStatus}</h1>
 		</div>
 	);
 }
