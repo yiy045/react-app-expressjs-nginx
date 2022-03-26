@@ -25,6 +25,8 @@ function SignIn() {
                     setLoginStatus(response.data.message);
                 } else {
                     setLoginStatus(response.data[0].username);
+                    window.location.reload(true);
+                    history.push("/");
                 }
 
             });
@@ -33,7 +35,7 @@ function SignIn() {
     useEffect(() => {
         Axios.get("http://localhost:5000/signin").then((response) => {
             if (response.data.user) {
-                console.log(response.data.user);
+                history.push("/");
             }
         })
     }, [])
