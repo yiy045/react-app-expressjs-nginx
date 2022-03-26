@@ -2,22 +2,24 @@ import "./HomePage.css"
 import React from "react";
 
 import cartImage from "../../images/cartimage.png"
+import 'font-awesome/css/font-awesome.min.css';
 
 function Home() {
-
   return (
     <div>
       <div className="Topright">
         <div className="hotbar-button">
-            <img src = { cartImage } alt=""
+          <img src={cartImage} alt=""
             width="50"
             height="50"
-            />
+          />
         </div>
       </div>
       <div className="Middleright">
-        <div className="topnav">
+        <div className="searchbar">
+          <div className="fa fa-search"></div>
           <input type="text" placeholder="Search..."></input>
+          <div className="fa fa-times"></div>
         </div>
       </div>
 
@@ -27,7 +29,7 @@ function Home() {
         <div className="Frames">
           <div className="DoD">
             <h3>Deals of the Day</h3>
-            <button onclick = "Search">frame set 1</button>
+            <button>frame set 1</button>
             <button>frame set 2</button>
             <button>frame set 3</button>
           </div>
@@ -39,11 +41,8 @@ function Home() {
           </div>
         </div>
       </div>
-
     </div>
   );
-  
 }
-
 
 export default Home;
