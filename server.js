@@ -44,6 +44,7 @@ const db = mysql.createConnection({
 
 db.connect((err) => {
     if (err) {
+        console.log("\x1b[41m", "MySQL Connection Error:")
         throw err;
     }
 
@@ -104,6 +105,14 @@ app.post("/register", (req, res) => {
 
 
 app.get("/signin", (req, res) => {
+    if (req.session.user) {
+        res.send({ loggedIn: true, user: req.session.user })
+    } else {
+        res.send({ loggedIn: false })
+    }
+})
+
+app.get("/register", (req, res) => {
     if (req.session.user) {
         res.send({ loggedIn: true, user: req.session.user })
     } else {
