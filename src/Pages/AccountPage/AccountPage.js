@@ -3,31 +3,50 @@ import "./AccountPage.css"
 import Axios from "axios";
 import { useHistory } from "react-router-dom";
 
+
+
 function getAccountInformation() {
 	
-  Axios.get("http://localhost:5000/register", data).then((response) => {
-			if (response.data.error) {
-				alert(response.data.error);
-				console.log("error!");
-			} else {
-				if (response.data.message) {
-					setRegistrationStatus(response.data.message);
-				}
-			}
-		});
+return (
+<positioning>
+  <div class="container">
+    <div class="title">Profile</div>
+    <div class="content">
+      <form action="#">
+        <div class="user-details">
+          <div class="input-box">
+            <span class="details"><strong>Full Name</strong></span>
+            <input type="text" required></input>
+          </div>
+          <div class="input-box">
+            <span class="details"><strong>Username</strong></span>
+            <input type="text"required></input>
+          </div>
+          <div class="input-box">
+            <span class="details"><strong>Email</strong></span>
+            <input type="text" required></input>
+          </div>
+          <div class="input-box">
+            <span class="details"> <strong>Phone Number</strong></span>
+            <input type="text" required></input>
+          </div>
+          <div class="input-box">
+            <span class="details"><strong>Password</strong></span>
+            <input type="text" required></input>
+          </div>
+          <div class="input-box">
+            <span class="details"><strong>Confirm Password</strong></span>
+            <input type="text" required></input>
+          </div>
+        </div>
+        <div class="button">
+          <input type="submit" value="Profile"></input>
+        </div>
+      </form>
+    </div>
+	</div>
+	</positioning>
+);
 
-  
-
-	return (
-		<div className="information">
-		  <label>Username:</label>
-		  <label>email:</label>
-		  <label>Address:</label>
-		  <label>First Name:</label>
-      <label>Last Name:</label>
-      <label>Phone Number:</label>
-		</div>
-	);
-}
-
+	}
 export default getAccountInformation;
