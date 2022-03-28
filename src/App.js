@@ -1,3 +1,4 @@
+import Account from "./Pages/AccountPage/AccountPage";
 import React, { useEffect, useState } from "react";
 import Registration from "./Pages/RegistrationPage/RegistrationPage";
 import Home from "./Pages/HomePage/HomePage"
