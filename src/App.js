@@ -1,53 +1,59 @@
-import React from "react";
 import Account from "./Pages/AccountPage/AccountPage";
+import React, { useEffect, useState } from "react";
 import Registration from "./Pages/RegistrationPage/RegistrationPage";
 import Home from "./Pages/HomePage/HomePage"
+import Axios from "axios";
 import Product from "./Pages/ProductPage/ProductPage"
-import SignIn from "./Pages/SignInPage/SignInPage"
+import Login from "./Pages/SignInPage/SignInPage"
 import "./GeneralStyles.css";
+import "./App.css"
+import home from "../src/images/homebutton.png"
+
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Link
 } from "react-router-dom";
-
 function App() {
-  const basename = process.env.REACT_APP_BASENAME || null;
-  return ( 
-    <Router basename={basename}>
-      <div>
-        <nav>
-          <Link to="/">Home</Link>
-          &nbsp;
-          <Link to="/registration">Register</Link>
-          &nbsp;
-          <Link to="/product">Product</Link>
-          &nbsp;
-          <Link to="/signin">Sign In</Link>
-          &nbsp;
-          <Link to="/account">Account</Link>
-        </nav>
+  const [loginState, setLoginState] = useState(false);
+  Axios.defaults.withCredentials = true;
 
+  useEffect(() => {
+    Axios.get("http://localhost:5000/signin").then((response) => {
+      if (response.data.user) {
+        setLoginState(true);
+      }
+    })
+  }, [])
+
+  return (
+    <div className="App">
+      <Router>
+        <div className="navbar">
+          <div className="links">
+            <Link to="/">
+              <img src={home} alt=""
+                width="50"
+                height="50" />
+            </Link>
+            <Link to="/product">Product</Link>
+            {!loginState && (
+              <>
+                <Link to="/registration">Register</Link>
+                <Link to="/login">Sign In</Link>
+              </>
+            )}
+          </div>
+        </div>
         <Switch>
-          <Route path="/signin">
-            <SignIn />
-          </Route>
-          <Route path="/account">
-            <Account />
-          </Route>
-          <Route path="/registration">
-            <Registration />
-          </Route>
-          <Route path="/product">
-            <Product />
-          </Route>
-          <Route path="/">
-            <Home />
-          </Route>
+          <Route path="/registration" exact component={Registration} />
+          <Route path="/product" exact component={Product} />
+          <Route path="/login" exact component={Login} />
+          <Route path="/" exact component={Home} />
         </Switch>
-      </div>
-    </Router>
+      </Router>
+    </div>
   );
 }
 
