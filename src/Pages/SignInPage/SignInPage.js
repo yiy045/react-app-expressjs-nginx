@@ -44,7 +44,7 @@ function SignIn() {
         <div className="page-background">
             <div className="signin-webpage">
                 <div className="signin-wrapper">
-                    <h1>Sign In</h1>
+                    <h1><b><i>Sign In</i></b></h1>
                     <input
                         type="text"
                         placeholder="Username..."
@@ -61,7 +61,7 @@ function SignIn() {
                         }}
                     />
                     <div>
-                        <button onClick={login}> Login </button>
+                        <button onClick={login}> <b>Login</b></button>
                     </div>
                     <h1>{loginStatus}</h1>
                 </div>
