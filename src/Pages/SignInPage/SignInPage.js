@@ -41,28 +41,30 @@ function SignIn() {
     }, [])
 
     return (
-        <div className="signin-webpage">
-            <div className="signin-wrapper">
-                <h1>Sign In</h1>
-                <input
-                    type="text"
-                    placeholder="Username..."
-                    onChange={(e) => {
-                        setUsername(e.target.value);
-                    }}
-                />
+        <div className="page-background">
+            <div className="signin-webpage">
+                <div className="signin-wrapper">
+                    <h1><b><i>Sign In</i></b></h1>
+                    <input
+                        type="text"
+                        placeholder="Username..."
+                        onChange={(e) => {
+                            setUsername(e.target.value);
+                        }}
+                    />
 
-                <input
-                    type="password"
-                    placeholder="Password..."
-                    onChange={(e) => {
-                        setPassword(e.target.value);
-                    }}
-                />
-                <div>
-                    <button onClick={login}> Login </button>
+                    <input
+                        type="password"
+                        placeholder="Password..."
+                        onChange={(e) => {
+                            setPassword(e.target.value);
+                        }}
+                    />
+                    <div>
+                        <button onClick={login}> <b>Login</b></button>
+                    </div>
+                    <h1>{loginStatus}</h1>
                 </div>
-                <h1>{loginStatus}</h1>
             </div>
         </div>
     );

@@ -1,11 +1,23 @@
+div.page-background{
+  position: fixed;
+  background-image:url("../../images/oceanimagedesktop.jpg");
+  background-blend-mode: soft-light;
+  background-size: cover;
+  height: 100% !important;
+  width: 100% !important;
+}
+
 .signin-wrapper {
+  position: fixed;
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: 350px;
+  height: 350px;
+  left: 39%;
+  top: 25%;
   justify-content: center;
   align-items: center;
-  background-color: aqua;
-  min-height: 100vh;
+  min-height: 300px;
 }
 
 .signin-wrapper input {
@@ -14,6 +26,7 @@
   font-size: 20px;
   padding-left: 10px;
   margin: 5px;
+  border-radius: 10px;
 }
 
 .signin-wrapper button {

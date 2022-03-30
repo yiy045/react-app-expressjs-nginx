@@ -47,51 +47,53 @@ function Registration() {
 	};
 
 	return (
-		<div className="information">
-			<label>Username:</label>
-			<input type="text"
-				onChange={(event) => {
-					setUsername(event.target.value);
-				}}
-			/>
-			<label>Password:</label>
-			<input type="text"
-				onChange={(event) => {
-					setPassword(event.target.value);
-				}}
-			/>
-			<label>Email:</label>
-			<input type="text"
-				onChange={(event) => {
-					setEmail(event.target.value);
-				}}
-			/>
-			<label>Address:</label>
-			<input type="text"
-				onChange={(event) => {
-					setAddress(event.target.value);
-				}}
-			/>
-			<label>First Name:</label>
-			<input type="text"
-				onChange={(event) => {
-					setFirstname(event.target.value);
-				}}
-			/>
-			<label>Last Name:</label>
-			<input type="text"
-				onChange={(event) => {
-					setLastname(event.target.value);
-				}}
-			/>
-			<label>Phone Number:</label>
-			<input type="text"
-				onChange={(event) => {
-					setPhone(event.target.value);
-				}}
-			/>
-			<button onClick={registerUser}>Register</button>
-			<h1>{registrationStatus}</h1>
+		<div className="page-background">
+			<div className="information">
+				<label><b>Username:</b></label>
+				<input type="text"
+					onChange={(event) => {
+						setUsername(event.target.value);
+					}}
+				/>
+				<label><b>Password:</b></label>
+				<input type="text"
+					onChange={(event) => {
+						setPassword(event.target.value);
+					}}
+				/>
+				<label><b>Email:</b></label>
+				<input type="text"
+					onChange={(event) => {
+						setEmail(event.target.value);
+					}}
+				/>
+				<label><b>Address:</b></label>
+				<input type="text"
+					onChange={(event) => {
+						setAddress(event.target.value);
+					}}
+				/>
+				<label><b>First Name:</b></label>
+				<input type="text"
+					onChange={(event) => {
+						setFirstname(event.target.value);
+					}}
+				/>
+				<label><b>Last Name:</b></label>
+				<input type="text"
+					onChange={(event) => {
+						setLastname(event.target.value);
+					}}
+				/>
+				<label><b>Phone Number:</b></label>
+				<input type="text"
+					onChange={(event) => {
+						setPhone(event.target.value);
+					}}
+				/>
+				<button onClick={registerUser}><i>Register</i></button>
+				<h1>{registrationStatus}</h1>
+			</div>
 		</div>
 	);
 }

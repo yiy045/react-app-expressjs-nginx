@@ -6,26 +6,23 @@ function Product() {
     let manufacturer = "Stark Industries"
     let cost = 99.99;
     return (
-        <div>
-            <div className="App1">
-                <div className="header1">
-                    <b>WorldWide Frames</b> - <i>See A Better World</i>
-                </div>
-                {/* create an overall panel, with header 2, the image, and the button inside of it */}
-                <div className="panel1">
+        <div className="page-background">
+            {/* create an overall panel, with header 2, the image, and the button inside of it */}
+            <div className="panel1">
+                <div className="image1-panel">
                     <div className="image1">
-                        <img src={image} 
+                        <img src={image}
                             alt=""
                             width="400"
                             height="400" />
                     </div>
-                    <div className="header2">
-                        <p><b>Name: </b> {name}</p>
-                        <p><b>Manufacturer: </b>{manufacturer} </p>
-                        <p><b>Cost: </b>{cost}</p>
-                    </div>
-                    <button>Add to Cart</button>
                 </div>
+                <div className="header2">
+                    <p><b>Name: </b> {name}</p>
+                    <p><b>Manufacturer: </b>{manufacturer} </p>
+                    <p><b>Cost: </b>{cost}</p>
+                </div>
+                <button>Add to Cart</button>
             </div>
         </div>
     );
