@@ -16,7 +16,7 @@ function SignIn() {
     let history = useHistory();
 
     const login = () => {
-        Axios.post("http://localhost:5000/signin",
+        Axios.post("http://3.93.4.5:5000/signin",
             {
                 username: username,
                 password: password,
@@ -33,7 +33,7 @@ function SignIn() {
     };
 
     useEffect(() => {
-        Axios.get("http://localhost:5000/signin").then((response) => {
+        Axios.get("http://3.93.4.5:5000/signin").then((response) => {
             if (response.data.user) {
                 history.push("/");
             }
