@@ -14,7 +14,7 @@ const saltRounds = 10;
 
 app.use(express.json());
 app.use(cors({
-    origin: ["http://3.93.4.5:3000"],
+    origin: ["http://ec2-3-93-4-5.compute-1.amazonaws.com"],
     methods: ["GET", "POST"],
     credentials: true,
 }));
