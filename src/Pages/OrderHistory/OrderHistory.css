@@ -2,8 +2,9 @@
 
 .order-list .container {
     display: flex;
-    flex-direction: row;
-    margin-left: 25%;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    flex: 21%;
 }
 
 .order-list .tables {
@@ -12,7 +13,9 @@
     background-color: cadetblue;
     color: white;
     border-spacing: 10px;
-    margin-left: 10px;
+}
+.order-list th {
+    text-align: center;
 }
 
 .fa-info-circle {
