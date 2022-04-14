@@ -30,7 +30,7 @@ function App() {
     Axios.get("http://3.93.4.5:5000/signin").then((response) => {
       if (response.data.user) {
         setLoginState(true);
-        if(response.data.user[0].username == "admin")
+        if(response.data.user.username == "admin")
         {
           setIsAdmin(true);
         }
