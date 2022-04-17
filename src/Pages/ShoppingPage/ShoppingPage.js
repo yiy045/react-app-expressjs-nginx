@@ -2,7 +2,7 @@ import "./ShoppingPage.css"
 import Header from './components/Header';
 import Main from './components/Main';
 import Basket from './components/Basket';
-import data from './data';
+//import data from './data';
 import { useEffect, useState } from 'react';
 import Axios from "axios";
 
