@@ -122,18 +122,16 @@ app.get("/register", (req, res) => {
 
 app.get("/orders", (req, res) => {
     db.query(
-        "SELECT * FROM order_information",
+        "SELECT orders.order_num, item_template.id, item_template.item_name, item_template.item_description, item_template.item_price FROM orders INNER JOIN item_template ON orders.item_id=item_template.id",
         (err, result) => {
             if (err) {
                 res.send({ err: err })
             }
-            let order_information = result;
-            let orderIds = []
-            result.map(index => {
-                orderIds.push(index.order_num);
-            })
+            
+            
+            res.send(result);
 
-            db.query(
+            /*db.query(
                 "SELECT * FROM orders WHERE `order_num` IN (?)",
                 [orderIds],
                 (err, orders_table) => {
@@ -164,9 +162,7 @@ app.get("/orders", (req, res) => {
 
                             res.send(data);
                         }
-                    )
-                }
-            )
+                    )*/
         }
     );
 })

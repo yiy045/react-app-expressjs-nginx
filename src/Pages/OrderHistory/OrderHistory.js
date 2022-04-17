@@ -15,9 +15,7 @@ function OrderHistory() {
         Axios.get("http://localhost:5000/orders").then((response) => {
             console.log(response.data);
             if (response.data) {
-                setOrderInfo(response.data.order_information);
-                setItemInfo(response.data.itemInfo)
-                setOrders(response.data.orders);
+                setItemInfo(response.data);
             }
 
         })
@@ -58,7 +56,7 @@ function OrderHistory() {
         if (!sortedConfig) {
             return;
         }
-        return sortedConfig.key  === name ? sortedConfig.direction : undefined;
+        return sortedConfig.key === name ? sortedConfig.direction : undefined;
     }
 
     return (
@@ -117,7 +115,7 @@ function OrderHistory() {
                     </tbody>
                 </table>
                 <table className="tables">
-                <caption>Item History</caption>
+                    <caption>Item History</caption>
                     <thead>
                         <tr className="tr">
                             <th>
@@ -167,7 +165,7 @@ function OrderHistory() {
                             items.map(index => {
                                 return (
                                     <tr key={index.id}>
-                                        <td>{ }</td>
+                                        <td>{index.order_num}</td>
                                         <td>{index.id}</td>
                                         <td>{index.item_name}</td>
                                         <td>{index.item_description}</td>
