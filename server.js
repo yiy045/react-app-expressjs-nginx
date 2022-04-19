@@ -151,11 +151,20 @@ app.get("/orders", (req, res) => {
 
 app.get("/get-items", (req, res) => {
     db.query(
-        "SELECT * FROM item_template",
+        `SELECT
+            item_template.id,
+            item_template.item_name,
+            item_template.item_description,
+            item_template.item_price,
+            image_pathnames.pathname
+        FROM item_template
+        JOIN image_pathnames
+            ON item_template.id = image_pathnames.item_id`,
         (err, items) => {
             if (err) {
                 res.send({ err: err })
             }
+
             res.send({ itemList: items });
         }
     );
