@@ -54,7 +54,7 @@ function App() {
 
   const logout = (e) => {
     const cookies = new Cookies();
-    if (cookies.get('userId')) {
+    if (cookies.get('userId') || (JSON.parse(localStorage.getItem('login')) === "true")) {
       cookies.remove('userId');
       localStorage.setItem('login', JSON.stringify("false"))
       window.location.reload(false);
