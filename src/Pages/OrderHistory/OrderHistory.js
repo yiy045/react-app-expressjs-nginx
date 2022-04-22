@@ -81,8 +81,8 @@ function OrderHistory(props) {
                             <th>
                                 <button
                                     type="button"
-                                    onClick={() => requestSort('id')}
-                                    className={getClassNamesFor('id')}>
+                                    onClick={() => requestSort('item_id')}
+                                    className={getClassNamesFor('item_id')}>
                                     Item Id
                                 </button>
                             </th>
