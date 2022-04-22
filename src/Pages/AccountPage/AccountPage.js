@@ -14,10 +14,6 @@ function Account() {
 
   let history = useHistory();
 
-  const signout = () => {
-    history.push("/");  
-};
-
   useEffect(() => {
     Axios.get("http://localhost:5000/signin").then((response) => {
         if (!(response.data.user)) {
@@ -65,9 +61,6 @@ function Account() {
                   <span className="details"><strong>Address</strong></span>
                   <input type="text" value={address} disabled ></input>
                 </div>
-              </div>
-              <div className="signoutbutton">
-                <button onClick={signout}>Sign Out</button>
               </div>
             </form>
           </div>
