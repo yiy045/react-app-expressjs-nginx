@@ -31,30 +31,31 @@ function App() {
   Axios.defaults.withCredentials = true;
 
   useEffect(() => {
-    if (!JSON.parse(localStorage.getItem('login')) || (JSON.parse(localStorage.getItem('login')) === "false")) {
       Axios.get("http://localhost:5000/signin").then((response, err) => {
         if (response.data.user) {
           localStorage.setItem('login', JSON.stringify("true"));
 
           setUserInfo(response.data.user);
           if (response.data.user.username == "admin") {
-            setIsAdmin(true);
+            //setIsAdmin(true);
+            localStorage.setItem('admin', JSON.stringify("true"));
           }
         }
         else {
-          logout()
+          logout();
         }
       }).catch((err) => {
         console.log(err);
         logout();
       })
-    }
-
   }, [JSON.parse(localStorage.getItem('login'))])
 
   const logout = (e) => {
     const cookies = new Cookies();
     if (cookies.get('userId') || (JSON.parse(localStorage.getItem('login')) === "true")) {
+      if (JSON.parse(localStorage.getItem('admin')) === "true") {
+        localStorage.setItem('admin', JSON.stringify("false"))
+      }
       cookies.remove('userId');
       localStorage.setItem('login', JSON.stringify("false"))
       window.location.reload(false);
@@ -62,6 +63,7 @@ function App() {
     }
   }
 
+  console.log(isAdmin);
   return (
     <div className="App">
       <Router>
@@ -86,11 +88,11 @@ function App() {
                 <Link to="/account">Account</Link>
               </>
             )}
-            {JSON.parse(localStorage.getItem('login')) === "true" && isAdmin && (
+            {JSON.parse(localStorage.getItem('admin')) === "true" && 
               <>
                 <Link to="/admin">Admin Portal</Link>
               </>
-            )}
+            }
 
           </div>
           {JSON.parse(localStorage.getItem('login')) === "true" &&
