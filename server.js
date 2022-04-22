@@ -16,21 +16,22 @@ const saltRounds = 10;
 
 app.use(express.json());
 app.use(cors({
-    origin: ["http://ec2-3-93-4-5.compute-1.amazonaws.com"],
+    origin: ["http://localhost:3000"],
     methods: ["GET", "POST"],
     credentials: true,
 }));
 
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: true }));
-
 app.use(session({
-    key: "userId",
     secret: "test",
+    name: 'userId',
     resave: false,
     saveUninitialized: false,
+    httpOnly: false,
     cookie: {
         expires: 60 * 60 * 60 * 24,
+        httpOnly: false,
     },
 }));
 
@@ -38,10 +39,10 @@ app.use(session({
 const server = http.createServer(app);
 
 const db = mysql.createConnection({
-  user: "nodejs",
-  host: "localhost",
-  password: "nodejs",
-  database: "account_information"
+    user: "nodejs",
+    host: "54.174.119.57",
+    password: "Nodejs#123",
+    database: "account_information"
 });
 
 db.connect((err) => {
@@ -327,6 +328,67 @@ app.post("/updateproduct", (req, res) => {
         }
     )
 });
+
+app.post("/checkout", (req, res) => {
+    //console.log(req.body);
+
+    let orderQuantity = 0;
+
+    const totalPrice = req.body.totalPrice;
+    const accountId = req.body.accountId;
+
+    req.body.cartItems.map(index => {
+        orderQuantity += index.qty;
+    })
+
+    const orderData = [
+        orderQuantity,
+        totalPrice,
+    ]
+
+    db.query(
+        "INSERT INTO order_information (quantity, total_price) VALUES (?, ?);",
+        orderData,
+        (err, result) => {
+            if (err) {
+                console.log(err)
+            } else {
+                console.log(result);
+                let orderNum = result.insertId;
+                let historyData = [
+                    accountId,
+                    orderNum
+                ]
+                db.query (
+                    "INSERT INTO order_history (cust_id, order_num) VALUES (?, ?);",
+                    historyData,
+                    (err, result) => {
+                        if (err) {
+                            console.log(err);
+                        } else {
+                            let itemInfo = []
+                            req.body.cartItems.map(index => {
+                                itemInfo.push([orderNum, index.id]);
+                            })
+                            db.query(
+                                "INSERT INTO orders (order_num, item_id) VALUES ?;",
+                                [itemInfo],
+                                (err, result) => {
+                                    if (err) {
+                                        console.log(err)
+                                    } else {
+                                        console.log(result);
+                                    }
+                                }
+
+                            )
+                        }
+                    }
+                )
+            }
+        }
+    )
+})
 
 // start express server on port 5000
 server.listen(5000, () => {
