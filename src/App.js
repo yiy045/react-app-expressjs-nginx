@@ -4,7 +4,7 @@ import Home from "./Pages/HomePage/HomePage"
 import Axios from "axios";
 import Product from "./Pages/ProductPage/ProductPage"
 import Login from "./Pages/SignInPage/SignInPage"
-import Cart from "./Pages/ShoppingPage/ShoppingPage"
+import ShoppingPage from "./Pages/ShoppingPage/ShoppingPage"
 import Account from "./Pages/AccountPage/AccountPage"
 import Admin from "./Pages/AdminPortal/adminPortal"
 import OrderHistory from "./Pages/OrderHistory/OrderHistory.js"
@@ -22,7 +22,7 @@ import {
   Route,
   Link
 } from "react-router-dom";
-import ShoppingPage from "./Pages/ShoppingPage/ShoppingPage";
+
 import cookieParser from "cookie-parser";
 function App() {
   const [loginState, setLoginState] = useState(false);
@@ -74,8 +74,8 @@ function App() {
                 width="50"
                 height="50" />
             </Link>
-            <Link to="/product">Product</Link>
-            <Link to="/cart">Shopping Page</Link>
+            <Link to="/product-page">Product</Link>
+            <Link to="/shopping-page">Shopping Page</Link>
             <Link to="/order-history">Order History</Link>
             {JSON.parse(localStorage.getItem('login')) === "false" && (
               <>
@@ -102,9 +102,9 @@ function App() {
         </div>
         <Switch>
           <Route path="/order-history" component={() => <OrderHistory />} />
-          <Route path="/cart" exact component={Cart} />
+          <Route path="/shopping-page" exact component={ShoppingPage} />
           <Route path="/registration" exact component={Registration} />
-          <Route path="/product" exact component={Product} />
+          <Route path="/product-page" exact component={Product} />
           <Route path="/login" exact component={Login} />
           <Route path="/account" exact component={Account} />
           <Route path="/admin" exact component={Admin} />
