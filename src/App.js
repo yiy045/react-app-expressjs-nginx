@@ -14,6 +14,7 @@ import UpdateProduct from "./Pages/UpdateProductPage/UpdateProductPage";
 import "./GeneralStyles.css";
 import "./App.css"
 import home from "../src/images/homebutton.png"
+import Cookies from 'universal-cookie';
 
 import {
   BrowserRouter as Router,
@@ -22,6 +23,7 @@ import {
   Link
 } from "react-router-dom";
 import ShoppingPage from "./Pages/ShoppingPage/ShoppingPage";
+import cookieParser from "cookie-parser";
 function App() {
   const [loginState, setLoginState] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
@@ -29,24 +31,36 @@ function App() {
   Axios.defaults.withCredentials = true;
 
   useEffect(() => {
-    Axios.get("http://localhost:5000/signin").then((response, err) => {
-      if (response.data.user) {
-        localStorage.setItem('login', JSON.stringify("true"));
+    if (!JSON.parse(localStorage.getItem('login')) || (JSON.parse(localStorage.getItem('login')) === "false")) {
+      Axios.get("http://localhost:5000/signin").then((response, err) => {
+        if (response.data.user) {
+          localStorage.setItem('login', JSON.stringify("true"));
 
-        setUserInfo(response.data.user);
-        if (response.data.user.username == "admin") {
-          setIsAdmin(true);
+          setUserInfo(response.data.user);
+          if (response.data.user.username == "admin") {
+            setIsAdmin(true);
+          }
         }
-      }
-      else {
-        localStorage.setItem('login', JSON.stringify("false"));
-      }
-    }).catch((err) => {
-      console.log(err);
-      localStorage.setItem('login', JSON.stringify("false"));
-    })
+        else {
+          logout()
+        }
+      }).catch((err) => {
+        console.log(err);
+        logout();
+      })
+    }
 
-  }, [])
+  }, [JSON.parse(localStorage.getItem('login'))])
+
+  const logout = (e) => {
+    const cookies = new Cookies();
+    if (cookies.get('userId')) {
+      cookies.remove('userId');
+      localStorage.setItem('login', JSON.stringify("false"))
+      window.location.reload(false);
+      alert("You have been logged out.")
+    }
+  }
 
   return (
     <div className="App">
@@ -79,6 +93,10 @@ function App() {
             )}
 
           </div>
+          {JSON.parse(localStorage.getItem('login')) === "true" &&
+            <button onClick={logout}>Logout</button>
+          }
+          
         </div>
         <Switch>
           <Route path="/order-history" component={() => <OrderHistory />} />

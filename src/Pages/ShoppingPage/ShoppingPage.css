@@ -33,29 +33,29 @@ img.small {
   max-height: 8rem;
 }
 
-button.add {
+.row button.add {
   background-color: aliceblue;
   border-radius: 3px;
   min-width: fit-content;
 }
 
-button.add:hover {
+.row button.add:hover {
   color: green;
   background-color: aliceblue;
 }
 
-button.remove {
+.row button.remove {
   border-radius: 3px;
   background-color: aliceblue;
   min-width: fit-content;
 }
 
-button.remove:hover {
+.row button.remove:hover {
   color: red;
   background-color: aliceblue;
 }
 
-button.badge {
+.row button.badge {
   background-color: #f04040;
   border: none;
   color: #11ff00;
@@ -89,5 +89,18 @@ button.badge {
 
 .products table td {
   word-break: break-all;
+}
 
+.products img {
+  width: 100px;
+  min-height: 13vh; 
+  border-radius: 10px;
+  margin-left: 5px;
+}
+
+.product-button {
+  margin-top: 5px;
+  background-color:honeydew;
+  margin-left: 9px;
+  border-radius: 1.5px;
 }
