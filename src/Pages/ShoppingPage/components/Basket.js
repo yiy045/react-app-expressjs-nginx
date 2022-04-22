@@ -1,13 +1,5 @@
 import React from 'react';
 import Axios from 'axios'
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
-
-import { useState } from 'react';
 
 export default function Basket(props) {
   const { cartItems, onAdd, onRemove, setCartItems } = props;
