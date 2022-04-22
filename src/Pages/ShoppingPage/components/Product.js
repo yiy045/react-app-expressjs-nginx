@@ -1,7 +1,21 @@
 import React from 'react';
+import { useHistory } from "react-router-dom";
+import {
+  Link
+} from "react-router-dom";
 
 export default function Product(props) {
   const { product, onAdd } = props;
+
+  const history = useHistory();
+
+  const viewProduct = (e) => {
+      history.push({
+        pathname: '/product-page',
+        state: product
+      })
+  }
+
   return (
     <div className="products">
       <table>
@@ -11,11 +25,11 @@ export default function Product(props) {
               {product.item_name}
             </th>
             <th>
-            <img
+              <img
                 src={product.pathname}
                 alt="Glasses"
                 width={100} />
-              <button className="product-button">View product</button>
+              <button onClick={viewProduct} className="product-button">View product</button>
             </th>
           </tr>
         </thead>
