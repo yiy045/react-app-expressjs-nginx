@@ -5,15 +5,16 @@ import {
 } from "react-router-dom";
 
 export default function Product(props) {
-  const { product, onAdd } = props;
+  const { product, onAdd, cartItems } = props;
 
   const history = useHistory();
 
   const viewProduct = (e) => {
-      history.push({
-        pathname: '/product-page',
-        state: product
-      })
+    history.push({
+      pathname: '/product-page',
+      state: product,
+      cart: cartItems
+    })
   }
 
   return (
@@ -53,7 +54,6 @@ export default function Product(props) {
             </td>
           </tr>
         </tbody>
-
       </table>
     </div>
 
