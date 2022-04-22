@@ -7,8 +7,6 @@ import { Redirect } from 'react-router-dom'
 
 function OrderHistory(props) {
 
-    console.log(props);
-
     useEffect(() => {
         if (JSON.parse(localStorage.getItem('login')) === "true") {
             Axios.get("http://localhost:5000/orders").then((response) => {
@@ -26,6 +24,7 @@ function OrderHistory(props) {
 
 
     const useSortableData = (items, config = { key: 'null', direction: 'null' }) => {
+        console.log(items);
 
         const [sortedConfig, setSortedConfig] = useState(config);
 
@@ -117,7 +116,7 @@ function OrderHistory(props) {
                         {
                             items.map(index => {
                                 return (
-                                    <tr key={index.item_id}>
+                                    <tr>
                                         <td>{index.order_num}</td>
                                         <td>{index.item_id}</td>
                                         <td>{index.item_name}</td>
