@@ -32,7 +32,7 @@ thead button {
     padding: 0.3em;
     min-width: max-content;
     background-color: transparent;
-    color:aquamarine
+    color:black
 }
 
 thead button.ascending::after {
