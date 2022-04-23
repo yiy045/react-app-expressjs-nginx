@@ -31,7 +31,7 @@ function App() {
   Axios.defaults.withCredentials = true;
 
   useEffect(() => {
-      Axios.get("http://localhost:5000/signin").then((response, err) => {
+      Axios.get("http://localhost:5000/signin").then((response, err) => {        
         if (response.data.user) {
           localStorage.setItem('login', JSON.stringify("true"));
 
@@ -77,7 +77,7 @@ function App() {
             <Link to="/product-page">Product</Link>
             <Link to="/shopping-page">Shopping Page</Link>
             <Link to="/order-history">Order History</Link>
-            {JSON.parse(localStorage.getItem('login')) === "false" && (
+            {JSON.parse(localStorage.getItem('login')) === "false" || !JSON.parse(localStorage.getItem('login')) && (
               <>
                 <Link to="/registration">Register</Link>
                 <Link to="/login">Sign In</Link>
