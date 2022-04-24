@@ -408,10 +408,27 @@ app.post("/discounts", (req, res) => {
             if (err) {
                 console.log(err)
             }
-            console.log(result);
+            res.send(result);
         }
     )
 });
+
+app.get("/get-discounts", (req, res) => {
+    db.query(
+        "SELECT * from discounts",
+        (err, result) => {
+            if (err) {
+                console.log(err)
+            } else {
+                let discount = {}
+                result.map(index => {
+                    discount[index.discount_code] = index.percentOff;
+                })
+                res.send(discount);
+            }
+        }
+    )
+})
 // start express server on port 5000
 server.listen(5000, () => {
     console.log('NodeJS server running');

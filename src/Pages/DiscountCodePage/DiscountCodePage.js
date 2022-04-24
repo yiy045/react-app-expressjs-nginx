@@ -5,18 +5,23 @@ import Axios from "axios";
 
 function DiscountCode()
 {
-
     const [codeName, setCodeName] = useState("");
     const [discountAmount, setDiscountAmount] = useState(0);
     
     const submitDiscount = (e) => {
         e.preventDefault();
+        if (!codeName || !discountAmount) {
+            alert("Please fill out all the fields before continuing")
+            return;
+        }
         const data = {
             codename: codeName,
             discountamount: discountAmount
         }
         Axios.post("http://localhost:5000/discounts", data).then((response) => {
-            console.log(response)
+            if (response.data) {
+                alert("Discount code created. Time to sell some orders!")
+            }
         })
     }
 
@@ -28,6 +33,7 @@ function DiscountCode()
                         <input 
                         type="text" 
                         placeholder="Discount Code Name"
+                        required
                         onChange={(event) => {
                             setCodeName(event.target.value)
                         }}/>
@@ -36,6 +42,7 @@ function DiscountCode()
                             <input 
                             type="text" 
                             placeholder="Discount Amount by Percent" 
+                            required
                             onChange={(event) => {
                                 setDiscountAmount(event.target.value)
                             }}/>

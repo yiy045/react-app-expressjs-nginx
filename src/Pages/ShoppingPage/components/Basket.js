@@ -42,9 +42,18 @@ export default function Basket(props) {
     console.log(totalPrice);
   }, [cartItems])
 
-  const checkCode = (e) => {
+  const checkCode = (e) => {  
     e.preventDefault();
-    setTotalPrice(totalPrice - (totalPrice * .1))
+    Axios.get("http://localhost:5000/get-discounts").then((response) => {
+      if (response.data) {
+        if (response.data[discountCode]) {
+          setTotalPrice(totalPrice - (totalPrice * (response.data[discountCode] / 100)))
+          alert("Discount code has been applied")
+        } else {
+          alert("Discount code does not exist!")
+        }
+      }
+    })
   }
   
 
