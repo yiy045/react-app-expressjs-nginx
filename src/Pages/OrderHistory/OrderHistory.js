@@ -126,7 +126,7 @@ function OrderHistory(props) {
                                 )
                             })
                         }
-                        {JSON.parse(localStorage.getItem('login')) === "false" || !JSON.parse(localStorage.getItem('login')) &&
+                        {(JSON.parse(localStorage.getItem('login')) === "false" || !JSON.parse(localStorage.getItem('login'))) &&
                             <Redirect to={{ alert: "Please login to view your orders!" }} />
                         }
                     </tbody>
