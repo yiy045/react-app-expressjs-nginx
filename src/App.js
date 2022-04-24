@@ -20,7 +20,8 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
+  Link,
+  useHistory
 } from "react-router-dom";
 
 import cookieParser from "cookie-parser";
@@ -29,6 +30,8 @@ function App() {
   const [isAdmin, setIsAdmin] = useState(false);
   const [userInfo, setUserInfo] = useState();
   Axios.defaults.withCredentials = true;
+
+  const history = useHistory();
 
   useEffect(() => {
       Axios.get("http://localhost:5000/signin").then((response, err) => {        
@@ -60,6 +63,7 @@ function App() {
       localStorage.setItem('login', JSON.stringify("false"))
       window.location.reload(false);
       alert("You have been logged out.")
+      history.push('/');
     }
   }
 
