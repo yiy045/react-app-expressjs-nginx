@@ -390,6 +390,28 @@ app.post("/checkout", (req, res) => {
     )
 })
 
+app.post("/discounts", (req, res) => {
+    console.log(req.body)
+
+    const codeName = req.body.codename;
+    const percentOff = req.body.discountamount;
+
+    let data = [
+        codeName,
+        percentOff
+    ]
+
+    db.query(
+        "INSERT INTO discounts (discount_code, percentOff) VALUES (?, ?);",
+        data,
+        (err, result) => {
+            if (err) {
+                console.log(err)
+            }
+            console.log(result);
+        }
+    )
+});
 // start express server on port 5000
 server.listen(5000, () => {
     console.log('NodeJS server running');

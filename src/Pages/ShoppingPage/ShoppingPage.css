@@ -62,6 +62,27 @@ img.small {
   width: 1.5rem;
 }
 
+.rowButton button {
+  min-width: max-content;
+}
+
+.discountInput input {
+  outline: none;
+}
+
+.apply input {
+  cursor: pointer;
+  border: none;
+  border-radius: 4px;
+  font-family: "Segoe UI", "Ubuntu", "Roboto", "Open Sans", "Helvetica Neue", sans-serif;
+  background-color: rgba(14, 61, 105, 0.8);
+  color: #fefefe;
+}
+
+.apply input:hover {
+  color:chartreuse
+}
+
 .products td button {
   width: max-content;
 }
@@ -93,14 +114,14 @@ img.small {
 
 .products img {
   width: 100px;
-  min-height: 13vh; 
+  min-height: 13vh;
   border-radius: 10px;
   margin-left: 5px;
 }
 
 .product-button {
   margin-top: 5px;
-  background-color:honeydew;
+  background-color: honeydew;
   margin-left: 9px;
   border-radius: 1.5px;
 }

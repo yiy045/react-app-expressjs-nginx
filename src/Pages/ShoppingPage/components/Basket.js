@@ -1,12 +1,15 @@
-import React from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import Axios from 'axios'
 
 export default function Basket(props) {
   const { cartItems, onAdd, onRemove, setCartItems } = props;
+
+  const [totalPrice, setTotalPrice] = useState();
+
+  const [discountCode, setDiscountCode] = useState();
   const itemsPrice = cartItems.reduce((a, c) => a + c.qty * c.item_price, 0);
   const taxPrice = itemsPrice * 0.0825;
   const shippingPrice = itemsPrice > 2000 ? 0 : 20;
-  const totalPrice = itemsPrice + taxPrice + shippingPrice;
 
   const checkOut = async () => {
     if (JSON.parse(localStorage.getItem('login')) === "true") {
@@ -30,6 +33,20 @@ export default function Basket(props) {
   const alertUser = () => {
     alert("Please login to perform this operation!")
   }
+
+
+
+
+  useEffect(() => {
+    setTotalPrice(itemsPrice + taxPrice + shippingPrice)
+    console.log(totalPrice);
+  }, [cartItems])
+
+  const checkCode = (e) => {
+    e.preventDefault();
+    setTotalPrice(totalPrice - (totalPrice * .1))
+  }
+  
 
 
   return (
@@ -83,13 +100,32 @@ export default function Basket(props) {
             </div>
             <hr />
             <div className="row">
-              <button onClick={checkOut}>
-                Place Order
-              </button>
+              <div className="rowButton">
+                <button onClick={checkOut}>
+                  Place Order
+                </button>
+              </div>
+              <div className="discount">
+                <div className="discountInput">
+                  <form>
+                    <input
+                      type="text"
+                      placeholder="Enter Discount Code"
+                      onChange={(event) => {
+                        setDiscountCode(event.target.value);
+                      }} />
+                  </form>
+                </div>
+                <div className="apply">
+                  <form onSubmit={checkCode}>
+                    <input type="submit" value="Apply" />
+                  </form>
+                </div>
+              </div>
             </div>
           </>
         )}
       </div>
-    </aside>
+    </aside >
   );
 }

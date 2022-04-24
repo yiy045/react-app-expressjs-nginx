@@ -1,31 +1,47 @@
 import "./DiscountCodePage.css"
+import React, { useState } from 'react';
+import Axios from "axios";
+
 
 function DiscountCode()
 {
+
+    const [codeName, setCodeName] = useState("");
+    const [discountAmount, setDiscountAmount] = useState(0);
+    
+    const submitDiscount = (e) => {
+        e.preventDefault();
+        const data = {
+            codename: codeName,
+            discountamount: discountAmount
+        }
+        Axios.post("http://localhost:5000/discounts", data).then((response) => {
+            console.log(response)
+        })
+    }
+
     return (
             <div className = "discountcode-wrapper">
                 <div className = "discountcode-form-wrapper">
                     <h2>Add a Discount Code</h2>
                     <form>
-                        <input type="text" placeholder="Discount Code Name" />
+                        <input 
+                        type="text" 
+                        placeholder="Discount Code Name"
+                        onChange={(event) => {
+                            setCodeName(event.target.value)
+                        }}/>
                     </form>
                     <form>
-                            <input type="text" placeholder="Discount Amount" />
+                            <input 
+                            type="text" 
+                            placeholder="Discount Amount by Percent" 
+                            onChange={(event) => {
+                                setDiscountAmount(event.target.value)
+                            }}/>
                     </form>
-                    <select name="discounttype" id="discounttype">
-                        <option value="dollar">$ off</option>
-                        <option value="percent">% off</option>
-                    </select>
-                    <form>
-                            <input type="text" placeholder="Applicable Items" />
-                    </form>
-                    <select name="applyto" id="applyto">
-                        <option value="price">By Price</option>
-                        <option value="manufacturer">By Manufacturer</option>
-                        <option value="specific">Specific Models</option>
-                    </select>
                     <div className = "submitbutton-wrapper">
-                        <form action="http://localhost:3000/discountcode">
+                        <form onSubmit={submitDiscount}>
                             <input type="submit" value="Create Discount Code" />
                         </form>
                     </div>
