@@ -27,14 +27,14 @@ function SignIn() {
                     setLoginStatus(response.data.message);
                 } else {
                     setLoginStatus(response.data[0].username);
-                    window.location.reload(true);
                     history.push("/");
+                    window.location.reload(false);
                 }
             });
     };
 
     useEffect(() => {
-        Axios.get("http://3.93.4.5:5000/signin").then((response) => {
+        Axios.get("http://localhost:5000/signin").then((response) => {
             if (response.data.user) {
                 history.push("/");
             }
@@ -42,40 +42,42 @@ function SignIn() {
     }, [])
 
     return (
-		<div className="signin-wrapper">
-			<div className="signin-form-wrapper">
-				<h2>Login</h2>
-				<form>
-					<div className="username">
-						<label><b>Username:</b></label>
-						<input 
-                        type="text"
-                        placeholder='Username...'
-							onChange={(event) => {
-								setUsername(event.target.value);
-							}}
-						/>
-					</div>
-					<div className="password">
-						<label><b>Password:</b></label>
-						<input 
-                        type="password"
-                        placeholder='Password...'
-							onChange={(event) => {
-								setPassword(event.target.value);
-							}}
-						/>
-					</div>
-					<div className="submit">
-						<button onClick={login}>Login</button>
-                        <div className="login-status">
-						    {loginStatus}
+        <div className="background-login">
+            <div className="signin-wrapper">
+                <div className="signin-form-wrapper">
+                    <h2>Login</h2>
+                    <form>
+                        <div className="username">
+                            <label><b>Username:</b></label>
+                            <input
+                                type="text"
+                                placeholder='Username...'
+                                onChange={(event) => {
+                                    setUsername(event.target.value);
+                                }}
+                            />
                         </div>
-					</div>
-                    
-				</form>
-			</div>
-		</div>
-	);
+                        <div className="password">
+                            <label><b>Password:</b></label>
+                            <input
+                                type="password"
+                                placeholder='Password...'
+                                onChange={(event) => {
+                                    setPassword(event.target.value);
+                                }}
+                            />
+                        </div>
+                        <div className="submit">
+                            <button onClick={login}>Login</button>
+                            <div className="login-status">
+                                {loginStatus}
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    );
 }
 export default SignIn;
