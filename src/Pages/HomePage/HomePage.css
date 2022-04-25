@@ -13,7 +13,7 @@
   flex:1 0 21%;
 }
 
-header {
+.HomeHeader header {
   text-align: left;
   background-image: url(../../images/oceanimagedesktop.jpg);
   background-blend-mode: lighten;
