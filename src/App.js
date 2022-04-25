@@ -78,9 +78,9 @@ function App() {
                 width="50"
                 height="50" />
             </Link>
-            <Link to="/product-page">Product</Link>
+            {/* <Link to="/product-page">Product</Link> */}
             <Link to="/shopping-page">Shopping Page</Link>
-            <Link to="/order-history">Order History</Link>
+            {/* <Link to="/order-history">Order History</Link> */}
             {(JSON.parse(localStorage.getItem('login')) === "false" || !JSON.parse(localStorage.getItem('login'))) && (
               <>
                 <Link to="/registration">Register</Link>
@@ -89,6 +89,7 @@ function App() {
             )}
             {JSON.parse(localStorage.getItem('login')) === "true" && (
               <>
+                <Link to="/order-history">Order History</Link>
                 <Link to="/account">Account</Link>
               </>
             )}

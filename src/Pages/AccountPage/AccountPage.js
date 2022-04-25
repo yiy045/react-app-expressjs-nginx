@@ -12,6 +12,13 @@ function Account() {
   const [phoneNum, setPhoneNum] = useState("");
   const [address, setAddress] = useState("");
 
+  const viewOrderHistory = (e) => {
+    history.push({
+      pathname: '/order-history',
+
+    })
+  }
+
   let history = useHistory();
 
   useEffect(() => {
@@ -64,6 +71,7 @@ function Account() {
               </div>
             </form>
           </div>
+          <button onClick={viewOrderHistory}>View Order History</button>
         </div>
       </div>
   );
