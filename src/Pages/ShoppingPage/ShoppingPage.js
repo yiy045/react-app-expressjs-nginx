@@ -59,6 +59,13 @@ function ShoppingPage(props) {
   return (
     <div className="ShoppingPage">
       <h2>Browse Products</h2>
+      <div className="Middleright">
+        <div className="searchbar">
+          <div className="fa fa-search"></div>
+          <input type="text" placeholder="Search..."></input>
+          <div className="fa fa-times"></div>
+        </div>
+      </div>
       <div className="row">
         <Main
           products={products}
