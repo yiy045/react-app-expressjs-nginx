@@ -20,7 +20,7 @@ function Product(props) {
     return (
         <div className="product-background">
             <div className="ProductPage">
-                <div className="row">
+                <div className="productrow">
                      {/* create an overall panel, with header 2, the image, and the button inside of it */}
                      <div className="container1">
                         <img
