@@ -12,6 +12,7 @@ const session = require("express-session");
 
 const mysql = require('mysql');
 const bcrypt = require('bcrypt');
+const { getEnabledCategories } = require('trace_events');
 const saltRounds = 10;
 
 app.use(express.json());
@@ -132,7 +133,8 @@ app.get("/orders", (req, res) => {
             orders.item_id,
             item_template.item_name,
             item_template.item_description,
-            item_template.item_price
+            order_information.quantity,
+            order_information.total_price
         FROM order_history
         JOIN account
             ON account.account_id = order_history.cust_id
@@ -140,6 +142,8 @@ app.get("/orders", (req, res) => {
             ON orders.order_num = order_history.order_num
         JOIN item_template
             ON orders.item_id = item_template.id
+        JOIN order_information
+                ON order_information.order_num = orders.order_num
         WHERE account.account_id = ?`,
         account_id,
         (err, result) => {
@@ -513,6 +517,35 @@ app.post("/delete-discount", (req, res) => {
         (err, result) => {
             if (err) {
                 console.log(err)
+            } else {
+                res.send(result);
+            }
+        }
+    )
+})
+
+app.get("/admin-orders", (req, res) => {
+    db.query(
+        `SELECT
+        account.account_id,
+        order_history.order_num,
+        orders.item_id,
+        item_template.item_name,
+        item_template.item_description,
+        order_information.quantity,
+        order_information.total_price
+    FROM order_history
+    JOIN account
+        ON account.account_id = order_history.cust_id
+    JOIN orders
+        ON orders.order_num = order_history.order_num
+    JOIN item_template
+        ON orders.item_id = item_template.id
+    JOIN order_information
+            ON order_information.order_num = orders.order_num`,
+        (err, result) => {
+            if (err) {
+                console.log(err);
             } else {
                 res.send(result);
             }
